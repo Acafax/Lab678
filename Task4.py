@@ -52,43 +52,8 @@ def odczyt_yaml(source_path, dest_ext, dest_path):
             tekst = file.read()
             # zamienia zawartość pliku yaml na coś bardzije zjadliwego
             zmienna_yaml = yaml.safe_load(tekst)
-            yaml_zamiana(zmienna_yaml, dest_ext, dest_path,)
     except FileNotFoundError:
         print(f"Nie znaleziono ścieżki do pliku {source_path}")
-
-
-def yaml_zamiana(zmienna_yaml, dest_ext, dest_path):
-    if dest_ext == ".json":
-        with open(dest_path, "w") as json_f:
-            json.dump(zmienna_yaml, json_f)
-    elif dest_ext == ".xml":
-        xml = json2xml.Json2xml(zmienna_yaml).to_xml()
-        with open(dest_path, "w") as xml_f:
-            xml_f.write(xml)
-    else:
-        return "coś poszło nie tak"
-# ==========================BLOK XML
-
-
-def odczyt_xml(source_path, dest_ext, dest_path):
-    try:
-        with open(source_path, "r") as file:
-            zmienna_xml = xmltodict.parse(file.read())
-            xml_zamiana(zmienna_xml, dest_ext, dest_path)
-    except FileNotFoundError:
-        print(f"Nie znaleziono ścieżki do pliku {source_path}")
-
-
-def xml_zamiana(zmienna_xml, dest_ext, dest_path):
-    if dest_ext == ".json":
-        with open(dest_path, "w") as json_f:
-            json.dump(zmienna_xml, json_f)
-    elif dest_ext == ".yaml":
-        with open(dest_path, "w") as yaml_f:
-            yaml.dump(zmienna_xml, yaml_f)
-    else:
-        return "coś poszło nie tak"
-
 
 # sprawda czy ściezki są prawdziwe
 if os.path.exists(source_path) == True and os.path.exists(dest_path) == True:
@@ -97,11 +62,7 @@ if os.path.exists(source_path) == True and os.path.exists(dest_path) == True:
         odczyt_json(source_path)
     elif source_ext == ".yaml":
         odczyt_yaml(source_path, dest_ext, dest_path)
-    elif source_ext == ".xml":
-        odczyt_xml(source_path, dest_ext, dest_path)
-    
-
-# sprawda czy ściezki są prawdziwe
+   # sprawda czy ściezki są prawdziwe
 if os.path.exists(source_path) != True or os.path.exists(dest_path) != True:
     print("poszczególne pliki nie istnieją albo ścieżki nie są poprawne")
     input("Naciśnij enter aby zakończyć")
