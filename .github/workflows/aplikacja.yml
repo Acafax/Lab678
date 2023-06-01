@@ -30,6 +30,7 @@ jobs:
     - name: Budowanie aplikacji exe
       run: |
         git checkout Task7
+        ls
         pyinstaller Task7.py
         echo "EXE_PATH=$(pwd)/Task7/dist/Task7.exe" >> $GITHUB_ENV
         # Dodaj tutaj komendy budujące plik .exe, np.:
