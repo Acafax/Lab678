@@ -24,7 +24,7 @@ jobs:
     - name: Zainstaluj zależności
       shell: pwsh
       run: |
-        ./Task0/instalator.ps1 
+        ./instalator.ps1 
       
 
     - name: Budowanie aplikacji exe
