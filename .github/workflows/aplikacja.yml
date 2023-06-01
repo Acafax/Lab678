@@ -23,7 +23,7 @@ jobs:
 
     - name: Zainstaluj zależności
       run: |
-        ./Task0/instalator.ps1 
+        powershell ./Task0/instalator.ps1 
       
 
     - name: Budowanie aplikacji exe
